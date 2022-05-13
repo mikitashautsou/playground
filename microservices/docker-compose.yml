@@ -1,0 +1,41 @@
+version: "3.9"
+networks:
+  monitoring:
+    driver: bridge
+services:
+  users: #docker run --rm -it -v ${PWD}:/work -w /work -p 5002:5000 aimvector/nodejs:1.0.0 /bin/sh
+    container_name: users
+    build:
+      context: ./users
+    ports:
+      - 3001:3000
+    networks:
+      - monitoring
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    volumes:
+      - ./metrics/grafana-datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+    environment:
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    ports:
+      - 3005:3000
+    expose:
+      - 3000
+    networks:
+      - monitoring
+  prometheus:
+    image: prom/prometheus:latest # use specific version for real projects
+    container_name: prometheus
+    volumes:
+      - ./metrics/prometheus.yml:/etc/prometheus/prometheus.yml
+      # - ./metrics:/etc/prometheus
+      # - ./metrics:/prometheus
+    ports:
+      - 9090:9090
+    expose:
+      - 9090
+    networks:
+      - monitoring
