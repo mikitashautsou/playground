@@ -11,6 +11,14 @@ services:
       - 3001:3000
     networks:
       - monitoring
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: monitoring_node_exporter
+    restart: unless-stopped
+    expose:
+      - 9100
+    networks:
+      - monitoring
   grafana:
     image: grafana/grafana
     container_name: grafana

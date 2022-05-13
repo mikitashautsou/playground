@@ -23,3 +23,15 @@ Pushgateway
 appollo graphql
 advanced prometehus
 types of grafana metrics
+mqtt
+fix volumes for grafana
+docker compose vs k8s
+load testing
+
+
+start via docker compose
+
+```bash
+docker compose up -d --build --force-recreate --no-deps
+docker compose down
+```
