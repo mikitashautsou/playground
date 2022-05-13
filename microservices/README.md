@@ -13,6 +13,7 @@ kubernetes
 helm
 ingress
 kafka ui
+react router
 
 redis
 terraform
