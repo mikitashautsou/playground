@@ -11,6 +11,18 @@ services:
       - 3001:3000
     networks:
       - monitoring
+  kafka-consumer:
+    container_name: kafka-consumer
+    build:
+      context: ./kafka/consumer
+    expose:
+      - 3000
+  kafka-producer:
+    container_name: kafka-producer
+    build:
+      context: ./kafka/producer
+    expose:
+      - 3000
   zookeeper:
     image: wurstmeister/zookeeper  
     restart: unless-stopped  
