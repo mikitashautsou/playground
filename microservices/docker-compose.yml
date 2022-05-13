@@ -11,6 +11,22 @@ services:
       - 3001:3000
     networks:
       - monitoring
+  zookeeper:
+    image: wurstmeister/zookeeper  
+    restart: unless-stopped  
+    ports: 
+      - 2181:2181
+  kafka:
+    image: wurstmeister/kafka
+    restart: unless-stopped
+    ports:
+      - 9092:9092
+    hostname: kafka
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=kafka   
+      - KAFKA_ADVERTISED_PORT=9092
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_CREATE_TOPICS=test_topic:1:1
   node-exporter:
     image: prom/node-exporter:latest
     container_name: monitoring_node_exporter
