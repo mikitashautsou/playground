@@ -10,9 +10,11 @@ persistent state
 rabbitmq
     broadcast messaging
     dead letter queue
+    scalking
 kafka
     broadcast messaging
     dead letter queue
+    scaling
 
 move out env variables
 kubernetes
@@ -42,6 +44,10 @@ nodejs event loop
 cookies
 verisioning
 start via docker compose
+sentry
+certs for k8s
+cookie-based session affinity,
+microservice patters
 
 ```bash
 docker compose up -d --build --force-recreate --no-deps
@@ -59,4 +65,10 @@ minikube dashboard
 minikube dashboard --url
 kubectl proxy --address='0.0.0.0' --disable-filter=true
 # dashboard will be available on /api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy
+```
+
+use minikube docker env
+
+```
+eval $(minikube docker-env)
 ```
