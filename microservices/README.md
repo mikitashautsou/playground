@@ -48,6 +48,10 @@ sentry
 certs for k8s
 cookie-based session affinity,
 microservice patters
+email senders
+agolia
+git reflow
+
 
 ```bash
 docker compose up -d --build --force-recreate --no-deps
