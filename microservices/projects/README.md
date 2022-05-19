@@ -75,3 +75,5 @@ Nest is [MIT licensed](LICENSE).
 
 ## Tech debt
 1. Use env variables for database connection
+2. Tests
+3. Migrations
