@@ -51,7 +51,10 @@ microservice patters
 email senders
 agolia
 git reflow
-
+microfrontends
+https://martinfowler.com/articles/micro-frontends.html
+auth0
+google sso
 
 ```bash
 docker compose up -d --build --force-recreate --no-deps
